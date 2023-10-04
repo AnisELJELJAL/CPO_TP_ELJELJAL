@@ -43,6 +43,8 @@ public static void main(String[] args) {
                 aTrouve = true;
             }
             tentative++;
+            // Affichez le nombre de tentatives
+            System.out.println("Nombre de tentatives : " + tentative);
         }
 
         // Fermez le scanner
