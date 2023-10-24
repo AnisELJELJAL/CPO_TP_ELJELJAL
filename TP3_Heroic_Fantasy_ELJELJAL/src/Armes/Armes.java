@@ -20,21 +20,16 @@ abstract public class Armes {
        
         
     }
-
-    @Override
-    public String toString() {
-        return "Armes{nom=" + nom + ", nvAttaque=" + nvAttaque + '}';
-    }
-    
-
-    public int getNvAttaque() {
+     public int getNiveau_attaque() {
         return nvAttaque;
     }
 
-    public String getNom() {
-        return nom;
+@Override
+    public String toString() { //toString
+        return nom + " " + nvAttaque + " ";
     }
-    
-    
-    
+
+    public Object getNom() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
