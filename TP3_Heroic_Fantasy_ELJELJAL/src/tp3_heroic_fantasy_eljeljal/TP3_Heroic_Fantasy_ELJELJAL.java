@@ -33,6 +33,22 @@ public class TP3_Heroic_Fantasy_ELJELJAL {
             System.out.print(tabArme.get(i));
         }
         System.out.println();
+        
+        Magicien mage1 = new Magicien ("Gandalf", 65, "confirme");
+        Magicien mage2 = new Magicien ("Garcimore", 44, "novice");
+        
+        Guerrier guerr1 = new Guerrier("Conan",78,"a pied");
+        Guerrier guerr2 = new Guerrier("Lannister",45,"cheval");
+        
+        ArrayList<Personnage> tabPerso = new ArrayList<Personnage>();
+        tabPerso.add(mage1);
+        tabPerso.add(mage2);
+        tabPerso.add(guerr1);
+        tabPerso.add(guerr2);
+         for (int i=0; i<4;i++){
+            System.out.print(tabPerso.get(i));
+        }
     }
+    
     
 }
