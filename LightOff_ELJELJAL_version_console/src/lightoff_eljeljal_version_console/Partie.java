@@ -22,9 +22,16 @@ public class Partie {
         nbCoups = 0;
     }
 
+    /**
+     *initialiser la partie
+     */
     public void initialiserPartie() {
         grille.melangerMatriceAleatoirement(20); // Vous pouvez spécifier le nombre de tours de mélange
     }
+
+    /**
+     *Permet d'afficher les indication de la partie
+     */
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Grille de Jeu :");
