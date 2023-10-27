@@ -3,15 +3,6 @@ package lightoff_eljeljal_version_console;
 
 import lightoff_eljeljal_version_console.CelluleLumineuse;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author anis_
- */
 import java.util.Random;
 
 public class GrilleDeJeu {
@@ -26,11 +17,14 @@ public class GrilleDeJeu {
 
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                matriceCellules[i][j] = new CelluleLumineuse();
+                matriceCellules[i][j] = new CelluleLumineuse(false);
             }
         }
     }
 
+    /**
+     * elle sert a eteindre toute les cellules de la grille
+     */
     public void eteindreToutesLesCellules() {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
@@ -39,6 +33,9 @@ public class GrilleDeJeu {
         }
     }
 
+    /**
+     *Active une ligne colonne ou diagonale aleatoire
+     */
     public void activerLigneColonneOuDiagonaleAleatoire() {
         Random random = new Random();
         int choix = random.nextInt(3);
@@ -61,6 +58,10 @@ public class GrilleDeJeu {
         }
     }
 
+    /**
+     * melange les matrices aleatoirement
+     * @param nbTours
+     */
     public void melangerMatriceAleatoirement(int nbTours) {
         eteindreToutesLesCellules();
 
@@ -69,30 +70,78 @@ public class GrilleDeJeu {
         }
     }
 
+    /**
+     * Active les lignes des celulles
+     * @param idLigne
+     */
     public void activerLigneDeCellules(int idLigne) {
         for (int j = 0; j < nbColonnes; j++) {
             matriceCellules[idLigne][j].activerCellule();
         }
     }
-
+    public void desactiverLigneDeCellules(int idLigne) {
+        for (int j = 0; j < nbColonnes; j++) {
+            matriceCellules[idLigne][j].eteindreCellule();
+        }
+    }
+    public CelluleLumineuse getColLigne (int ligne, int col)
+    {
+        return matriceCellules[ligne][col];
+    }
+    /**
+     * activer colonne de cellule
+     * @param idColonne
+     */
     public void activerColonneDeCellules(int idColonne) {
         for (int i = 0; i < nbLignes; i++) {
             matriceCellules[i][idColonne].activerCellule();
         }
     }
+    public void desactiverColonneDeCellules(int idColonne) {
+        for (int i = 0; i < nbLignes; i++) {
+            matriceCellules[i][idColonne].eteindreCellule();
+        }
+    }
 
+    /**
+     * activer une diagonale descendante
+     */
     public void activerDiagonaleDescendante() {
         for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
             matriceCellules[i][i].activerCellule();
         }
     }
 
+    /**
+     * activer une diagonale montante
+     */
     public void activerDiagonaleMontante() {
         for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
             matriceCellules[i][nbColonnes - 1 - i].activerCellule();
         }
     }
+    public void desactiverDiagonales(int coup) {
 
+        for (int ligne = 0, a = coup, b = coup; ligne < nbLignes; ++ ligne)
+        {
+            if (a >= 0)
+            {
+                matriceCellules[a][ligne].eteindreCellule();
+                --a;
+            }
+            if (b <= nbColonnes)
+            {
+                matriceCellules[b][ligne].eteindreCellule();
+                ++b;
+            }
+        }
+    }
+
+
+    /**
+     * permet d'eteindre les celulles
+     * @return
+     */
     public boolean cellulesToutesEteintes() {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
@@ -104,29 +153,37 @@ public class GrilleDeJeu {
         return true;
     }
 
+    /**
+     * Permet d'afficher la grille
+     * @return
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        
+
         // Affichage des indices des colonnes
         sb.append("  ");
-        for (int j = 0; j < nbColonnes; j++) {
-            sb.append(j).append(" ");
+        for (int j = 0; j < nbLignes; j++) {
+            sb.append("|").append(" ").append(j).append(" ");
+
         }
-        sb.append("\n");
-        
-        for (int i = 0; i < nbLignes; i++) {
+        sb.append("|\n");
+
+        for (int i = 0; i < nbColonnes; i++) {
             // Affichage de l'indice de la ligne
-            sb.append(i).append(" ");
-            
-            for (int j = 0; j < nbColonnes; j++) {
-                sb.append(matriceCellules[i][j]).append(" ");
+            for (int k = 0; k < nbLignes; k++) {
+                sb.append("----");
             }
-            sb.append("\n");
+            sb.append("---\n");
+            sb.append(i).append(" ");
+            for (int j = 0; j < nbLignes; j++) {
+                sb.append("|").append(" ").append(matriceCellules[i][j]).append(" ");
+            }
+            sb.append("|\n");
+
+
         }
         return sb.toString();
     }
-
-    
-    
 }
+
