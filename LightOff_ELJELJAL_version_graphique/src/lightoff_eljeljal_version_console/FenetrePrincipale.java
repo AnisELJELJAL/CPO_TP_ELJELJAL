@@ -31,8 +31,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         grille = unegrille;
         nbCoups = unnbcoup;
         initComponents();
-        int nbLignes = 5;
-        int nbColonnes = 5;
+        int nbLignes = 2;
+        int nbColonnes = 2;
          this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
             this.initialiserPartie();
            
@@ -206,7 +206,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     private void btnDiagonaleDescendanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagonaleDescendanteActionPerformed
         // TODO add your handling code here:
-        this.grille.activerDiagonaleDescendante();
+        this.grille.activerDesactiverDiagonaleDescendante();
     repaint();
             if (grille.cellulesToutesEteintes()){
             FenetreVictoire f = new FenetreVictoire() ;
@@ -217,7 +217,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     private void btnDiagonaleMontanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagonaleMontanteActionPerformed
         // TODO add your handling code here:
-        this.grille.activerDiagonaleMontante();
+        this.grille.activerDesactiverDiagonaleMontante();
     repaint();
             if (grille.cellulesToutesEteintes()){
             FenetreVictoire f = new FenetreVictoire() ;
