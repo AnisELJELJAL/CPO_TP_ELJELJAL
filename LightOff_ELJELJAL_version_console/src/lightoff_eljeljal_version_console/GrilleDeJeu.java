@@ -1,10 +1,14 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package lightoff_eljeljal_version_console;
-
-
-import lightoff_eljeljal_version_console.CelluleLumineuse;
-
 import java.util.Random;
 
+/**
+ *
+ * @author anis_
+ */
 public class GrilleDeJeu {
     private CelluleLumineuse[][] matriceCellules;
     private int nbLignes;
@@ -84,6 +88,33 @@ public class GrilleDeJeu {
             matriceCellules[idLigne][j].eteindreCellule();
         }
     }
+    public void activerDesactiverLigneDeCellules(int idLigne) {
+        for (int j = 0; j < nbColonnes; j++) {
+
+            if (matriceCellules[idLigne][j].getEtat())
+            {
+                matriceCellules[idLigne][j].eteindreCellule();
+            }
+            else
+            {
+                matriceCellules[idLigne][j].activerCellule();
+            }
+        }
+    }
+    public void activerDesactiverColonneDeCellules(int idColonne) {
+        for (int i = 0; i < nbLignes; i++) {
+            System.out.println ("i = " +i);
+System.out.println ("Colone = "+ idColonne);
+System.out.println ("etat = " + matriceCellules[i][idColonne].getEtat());
+            if (matriceCellules[i][idColonne].getEtat() == true) {
+                matriceCellules[i][idColonne].eteindreCellule();
+            }
+            else
+            {
+                matriceCellules[i][idColonne].activerCellule();
+            }
+        }
+    }
     public CelluleLumineuse getColLigne (int ligne, int col)
     {
         return matriceCellules[ligne][col];
@@ -126,12 +157,26 @@ public class GrilleDeJeu {
         {
             if (a >= 0)
             {
-                matriceCellules[a][ligne].eteindreCellule();
+                if (matriceCellules[a][ligne].getEtat())
+                {
+                    matriceCellules[a][ligne].eteindreCellule();
+                }
+                else
+                {
+                    matriceCellules[a][ligne].activerCellule();
+                }
                 --a;
             }
-            if (b <= nbColonnes)
+            if (b <= (nbColonnes - 1))
             {
-                matriceCellules[b][ligne].eteindreCellule();
+                if (matriceCellules[b][ligne].getEtat())
+                {
+                    matriceCellules[b][ligne].eteindreCellule();
+                }
+                else
+                {
+                    matriceCellules[b][ligne].activerCellule();
+                }
                 ++b;
             }
         }
@@ -186,4 +231,6 @@ public class GrilleDeJeu {
         return sb.toString();
     }
 }
+
+    
 
