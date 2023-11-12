@@ -31,8 +31,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         grille = unegrille;
         nbCoups = unnbcoup;
         initComponents();
-        int nbLignes = 2;
-        int nbColonnes = 2;
+        int nbLignes = 10;
+        int nbColonnes = 10;
          this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
             this.initialiserPartie();
            
@@ -256,10 +256,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GrilleDeJeu unegrille = new GrilleDeJeu(7, 7); // Spécifiez les dimensions de la grille
-                unegrille.melangerMatriceAleatoirement(20);
-                int nbCoups = 0;
-                new FenetrePrincipale(unegrille, nbCoups).setVisible(true);
+                new Bienvenu().setVisible(true);
             }
         });
     }
