@@ -31,8 +31,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         grille = unegrille;
         nbCoups = unnbcoup;
         initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
+        int nbLignes = 5;
+        int nbColonnes = 5;
          this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
             this.initialiserPartie();
            
@@ -175,13 +175,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 102, 102));
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("ROUGE  = ALLUMER");
+        jLabel1.setText("ROUGE  = ETEINT");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("JAUNE = ETEINT");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 100, -1));
+        jLabel2.setText("JAUNE = ALLUMER");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 110, -1));
 
         btnDiagonaleMontante.setBackground(new java.awt.Color(51, 51, 51));
         btnDiagonaleMontante.setText("MONTANTE");
