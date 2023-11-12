@@ -60,7 +60,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         final int j = i;
         @Override
         public void actionPerformed(ActionEvent e) {
-       grille.activerLigneDeCellules(j);
+       grille.activerDesactiverLigneDeCellules(j);
+               if (grille.cellulesToutesEteintes()){
+            FenetreVictoire f = new FenetreVictoire() ;
+            f.setVisible(true) ;
+        }
+
        repaint();
        }
       };
@@ -71,7 +76,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0,nbLignes * 40,1 * 40));
         this.pack();
         this.revalidate();
-        // création du panneau de boutons verticaux (pour les lignes)
+        // création du panneau de boutons horizontaux (pour les lignes)
         for (i = 0; i < nbLignes; i++) {
         JButton bouton_colonne = new JButton();
         ActionListener ecouteurClick = new ActionListener() {
@@ -79,8 +84,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
        
        @Override
         public void actionPerformed(ActionEvent e) {
-        grille.activerColonneDeCellules(j);
-       repaint();
+         grille.activerDesactiverColonneDeCellules(j);
+              if (grille.cellulesToutesEteintes()){
+            FenetreVictoire f = new FenetreVictoire() ;
+            f.setVisible(true) ;
+        }
+
+        repaint();
      }
  };
        bouton_colonne.addActionListener(ecouteurClick);
@@ -198,12 +208,22 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.grille.activerDiagonaleDescendante();
     repaint();
+            if (grille.cellulesToutesEteintes()){
+            FenetreVictoire f = new FenetreVictoire() ;
+            f.setVisible(true) ;
+        }
+
     }//GEN-LAST:event_btnDiagonaleDescendanteActionPerformed
 
     private void btnDiagonaleMontanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagonaleMontanteActionPerformed
         // TODO add your handling code here:
         this.grille.activerDiagonaleMontante();
     repaint();
+            if (grille.cellulesToutesEteintes()){
+            FenetreVictoire f = new FenetreVictoire() ;
+            f.setVisible(true) ;
+        }
+
     }//GEN-LAST:event_btnDiagonaleMontanteActionPerformed
 
     /**
