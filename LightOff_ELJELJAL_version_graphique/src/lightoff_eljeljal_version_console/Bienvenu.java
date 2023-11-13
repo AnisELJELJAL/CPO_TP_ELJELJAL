@@ -76,6 +76,7 @@ public class Bienvenu extends javax.swing.JFrame {
         GrilleDeJeu unegrille = new GrilleDeJeu(7, 7); // Spécifiez les dimensions de la grille
                 unegrille.melangerMatriceAleatoirement(20);
                 int nbCoups = 0;
+                                this.dispose();
                 new FenetrePrincipale(unegrille, nbCoups).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
