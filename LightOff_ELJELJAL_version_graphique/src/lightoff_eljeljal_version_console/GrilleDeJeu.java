@@ -50,9 +50,9 @@ public class GrilleDeJeu {
                 break;
             default:
                 if (random.nextBoolean()) {
-                    activerDiagonaleMontante();
+                    activerDesactiverDiagonaleMontante();
                 } else {
-                    activerDiagonaleDescendante();
+                    activerDesactiverDiagonaleDescendante();
                 }   break;
         }
     }
@@ -78,11 +78,11 @@ public class GrilleDeJeu {
             matriceCellules[idLigne][j].activerCellule();
         }
     }
-    public void desactiverLigneDeCellules(int idLigne) {
-        for (int j = 0; j < nbColonnes; j++) {
-            matriceCellules[idLigne][j].eteindreCellule();
-        }
-    }
+    
+    /**
+     * permet d'activer et desactiver les lignes de nos cellules
+     * @param idLigne
+     */
     public void activerDesactiverLigneDeCellules(int idLigne) {
         for (int j = 0; j < nbColonnes; j++) {
 
@@ -96,17 +96,32 @@ public class GrilleDeJeu {
             }
         }
     }
+
+    /**
+     * permet d'activer et desactiver nos colonne de cellules 
+     * @param idColonne
+     */
     public void activerDesactiverColonneDeCellules(int idColonne) {
         for (int i = 0; i < nbLignes; i++) {
-            if (matriceCellules[i][idColonne].getEtat()) {
+            if (matriceCellules[i][idColonne].getEtat())
+            {
+                
                 matriceCellules[i][idColonne].eteindreCellule();
             }
             else
             {
-                matriceCellules[i][idColonne].eteindreCellule();
+                
+                matriceCellules[i][idColonne].activerCellule();
             }
         }
-    }
+    } 
+
+    /**
+     * retourne les lignes et colonnes 
+     * @param ligne
+     * @param col
+     * @return
+     */
     public CelluleLumineuse getColLigne (int ligne, int col)
     {
         return matriceCellules[ligne][col];
@@ -120,61 +135,42 @@ public class GrilleDeJeu {
             matriceCellules[i][idColonne].activerCellule();
         }
     }
-    public void desactiverColonneDeCellules(int idColonne) {
-        for (int i = 0; i < nbLignes; i++) {
-            matriceCellules[i][idColonne].eteindreCellule();
-        }
-    }
+    
 
-    /**
-     * activer une diagonale descendante
-     */
-    public void activerDiagonaleDescendante() {
-        for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
-            matriceCellules[i][i].activerCellule();
-        }
-    }
+    //activer une diagonale descendante*/
+  public void activerDesactiverDiagonaleDescendante()
+  {
+      for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) 
+      {
+          if (matriceCellules[i][i].getEtat())
+          {
+              matriceCellules[i][i].eteindreCellule();
+          }
+          else
+          {
+              matriceCellules[i][i].activerCellule();
+          }
+      }
+  }
 
-    /**
-     * activer une diagonale montante
-     */
-    public void activerDiagonaleMontante() {
-        for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
-            matriceCellules[i][nbColonnes - 1 - i].activerCellule();
-        }
-    }
-    public void desactiverDiagonales(int coup) {
-
-        for (int ligne = 0, a = coup, b = coup; ligne < nbLignes; ++ ligne)
-        {
-            if (a >= 0)
-            {
-                if (matriceCellules[a][ligne].getEtat())
-                {
-                    matriceCellules[a][ligne].eteindreCellule();
-                }
-                else
-                {
-                    matriceCellules[a][ligne].activerCellule();
-                }
-                --a;
-            }
-            if (b <= (nbColonnes - 1))
-            {
-                if (matriceCellules[b][ligne].getEtat())
-                {
-                    matriceCellules[b][ligne].eteindreCellule();
-                }
-                else
-                {
-                    matriceCellules[b][ligne].activerCellule();
-                }
-                ++b;
-            }
-        }
-    }
-
-
+    
+     
+//activer une diagonale montante*/
+  public void activerDesactiverDiagonaleMontante() 
+  {
+      for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) 
+      {
+          if (matriceCellules[i][nbColonnes - 1 - i].getEtat())
+          {
+              matriceCellules[i][nbColonnes - 1 - i].eteindreCellule();
+          }
+          else
+          {
+              matriceCellules[i][nbColonnes - 1 - i].activerCellule();
+          }
+      }
+  }
+   
     /**
      * permet d'eteindre les celulles
      * @return

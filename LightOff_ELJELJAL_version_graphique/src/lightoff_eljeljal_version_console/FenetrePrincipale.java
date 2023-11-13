@@ -23,6 +23,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
  grille.eteindreToutesLesCellules();
  grille.melangerMatriceAleatoirement(10);
  }  
+       public void f(){
+                           this.dispose();
+       }
        
     GrilleDeJeu grille;
     int nbCoups;
@@ -31,8 +34,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         grille = unegrille;
         nbCoups = unnbcoup;
         initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
+        int nbLignes = 2;
+        int nbColonnes = 2;
          this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
             this.initialiserPartie();
            
@@ -62,6 +65,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
        grille.activerDesactiverLigneDeCellules(j);
                if (grille.cellulesToutesEteintes()){
+                   f();
             FenetreVictoire f = new FenetreVictoire() ;
             f.setVisible(true) ;
         }
@@ -86,6 +90,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
          grille.activerDesactiverColonneDeCellules(j);
               if (grille.cellulesToutesEteintes()){
+                  f();
             FenetreVictoire f = new FenetreVictoire() ;
             f.setVisible(true) ;
         }
@@ -209,6 +214,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.grille.activerDesactiverDiagonaleDescendante();
     repaint();
             if (grille.cellulesToutesEteintes()){
+                                this.dispose();
             FenetreVictoire f = new FenetreVictoire() ;
             f.setVisible(true) ;
         }
@@ -220,6 +226,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.grille.activerDesactiverDiagonaleMontante();
     repaint();
             if (grille.cellulesToutesEteintes()){
+                this.dispose();
             FenetreVictoire f = new FenetreVictoire() ;
             f.setVisible(true) ;
         }

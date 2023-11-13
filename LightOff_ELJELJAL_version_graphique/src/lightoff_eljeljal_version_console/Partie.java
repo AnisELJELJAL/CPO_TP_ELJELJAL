@@ -65,7 +65,7 @@ public class Partie {
                 input = scanner.nextLine();
                 coup = Integer.parseInt(input);
 
-                grille.desactiverDiagonales(coup);
+                
             }
 
             // Affichage de l'état de la grille mis à jour
